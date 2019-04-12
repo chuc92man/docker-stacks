@@ -5,13 +5,9 @@ FROM jupyter/minimal-notebook:4cdbc9cdb7d1
 # Inspect the Dockerfile at:
 # https://github.com/jupyter/docker-stacks/tree/master/minimal-notebook/Dockerfile
 
-USER root
-
 # Install nbgitpuller to synchronize a folder in a user's filesystem
 # with a git repository whenever the user starts their server.
 RUN pip install --no-cache-dir nbgitpuller
-
-USER $NB_UID
 
 # Data Cube installation and configuration...
 
