@@ -23,15 +23,15 @@ RUN conda install --quiet --yes --name cubeenv gdal=2.3.3 \
 	fix-permissions /home/$NB_USER
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
-RUN conda install --quiet --yes --name cubeenv descartes-1.1.0 \
-	folium-0.8.3 \
-	geopandas-0.4.1 \
-	hdmedians-0.13 \
-	ipyleaflet-0.10.1 \
-	rasterstats-0.13.1 \
-	scikit-image-0.15.0 \
-	scikit-learn-0.20.3 \
-	seaborn-0.9.0 && \
+RUN conda install --quiet --yes --name cubeenv descartes=1.1.0 \
+	folium=0.8.3 \
+	geopandas=0.4.1 \
+	hdmedians=0.13 \
+	ipyleaflet=0.10.1 \
+	rasterstats=0.13.1 \
+	scikit-image=0.15.0 \
+	scikit-learn=0.20.3 \
+	seaborn=0.9.0 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
