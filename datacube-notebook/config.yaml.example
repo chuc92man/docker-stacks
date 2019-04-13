@@ -1,0 +1,35 @@
+proxy:
+  secretToken: "<generate with $(openssl rand -hex 32)>"
+
+singleuser:
+  image:
+    name: <registry>/datacube-notebook
+    tag: <tag>
+  defaultUrl: "/lab"
+  extraEnv:
+    EDITOR: "vim"
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["gitpuller", "https://github.com/ceos-seo/data_cube_notebooks", "master", "notebooks"]
+
+hub:
+  extraConfig:
+    jupyterlab: |
+      c.Spawner.cmd = ['jupyter-labhub']
+
+ingress:
+  enabled: true
+  hosts:
+    - <hostname>
+
+auth:
+  type: github
+  github:
+    clientId: "<clientId>"
+    clientSecret: "<clientSecret>"
+    callbackUrl: "http://<hostname>/hub/oauth_callback"
+  admin:
+    access: true
+    users:
+      - <GitHub username>
