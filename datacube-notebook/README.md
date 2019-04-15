@@ -4,7 +4,7 @@ Open Data Cube Jupyter Notebook Stack.
 
 Should dependencies break over time, an [environment.yml.example](environment.yml.example) was provided to replicate the build at the time this repo was created.
 
-## Testing
+## Testing/Development set-up
 Once the Docker image is built, tagged and made available through a Docker registry, simply create a *config.yaml* file using the [config.yaml.example](config.yaml.example) provided. At that point, you might want to start the deployment with:
 
 ```
