@@ -23,8 +23,8 @@ For testing purposes the underlying database required by the Open Data Cube can 
 RELEASEDB=datacubedb
 NAMESPACEDB=datacubedb
 
-helm upgrade --install $RELEASE stable/postgresql \
-  --namespace $NAMESPACE \
+helm upgrade --install $RELEASEDB stable/postgresql \
+  --namespace $NAMESPACEDB \
   --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
