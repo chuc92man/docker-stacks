@@ -28,7 +28,7 @@ helm upgrade --install $RELEASE stable/postgresql \
   --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
-The corrisponding test configuration, `/home/jovyan/.datacube.conf`, would then look as per below:
+The corresponding test configuration, `/home/jovyan/.datacube.conf`, would then look as per below:
 
 ```
 [datacube]
