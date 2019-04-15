@@ -9,7 +9,7 @@ FROM jupyter/minimal-notebook:4cdbc9cdb7d1
 # with a git repository whenever the user starts their server.
 RUN pip install --no-cache-dir nbgitpuller
 
-# Data Cube installation
+# Data Cube installation (Python 3.6 is recommended)
 RUN conda create --yes --name cubeenv python=3.6 \
 	datacube=1.6.2 && \
 	conda clean -tipsy && \
@@ -39,5 +39,6 @@ RUN conda install --quiet --yes --name cubeenv \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
 
+# Make the cubeenv kernel available in Jupyter
 RUN conda install --quiet --yes nb_conda_kernels
 RUN conda install --quiet --yes --name cubeenv ipykernel
