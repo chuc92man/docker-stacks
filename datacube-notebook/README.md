@@ -4,9 +4,6 @@ Open Data Cube Jupyter Notebook Stack.
 
 Should dependencies break over time, an [environment.yml.example](environment.yml.example) was provided to replicate the build at the time this repo was created.
 
-![Example Terminal](JupyterHub_Terminal.png)
-![Example Notebook](JupyterHub_Notebook.png)
-
 ## Testing/Development set-up
 Once the Docker image is built, tagged and made available through a Docker registry, simply create a *config.yaml* file using the [config.yaml.example](config.yaml.example) provided. At that point, you might want to start the JupyterHub deployment with:
 
@@ -47,6 +44,12 @@ db_username: postgres
 # A blank password will fall back to default postgres driver authentication, such as reading your ~/.pgpass file.
 db_password: localuser1234
 ```
+
+The resulting environment will look like the following one:
+
+![Example Terminal](JupyterHub_Terminal.png)
+
+![Example Notebook](JupyterHub_Notebook.png)
 
 ## TODO
 A few things need to be finished:
