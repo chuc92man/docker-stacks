@@ -1,6 +1,10 @@
 # Documentation
 README.md
 
+# Media files
+JupyterHub_Notebook.png
+JupyterHub_Terminal.png
+
 # Misc files
 config.yaml.example
 environment.yml.example
