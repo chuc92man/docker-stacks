@@ -20,12 +20,15 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
 For testing purposes the underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql) as follows (make sure the PV claim can be satisfied for data persistence):
 
 ```
-helm upgrade --install datacubedb --namespace db \
-  --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube \
-    stable/postgresql
+RELEASEDB=datacubedb
+NAMESPACEDB=datacubedb
+
+helm upgrade --install $RELEASE stable/postgresql \
+  --namespace $NAMESPACE \
+  --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
-The corrisponding test configuration, `.datacube.conf`, would then look as per below:
+The corrisponding test configuration, `/home/jovyan/.datacube.conf`, would then look as per below:
 
 ```
 [datacube]
