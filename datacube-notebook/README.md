@@ -17,7 +17,7 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
   --values config.yaml
 ```
 
-For testing purposes the underlying PostgreSQL database required by the Open Data Cube can be set up as follows (make sure the PV claim can be satisfied for data persistence):
+For testing purposes the underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql) as follows (make sure the PV claim can be satisfied for data persistence):
 
 ```
 helm upgrade --install datacubedb --namespace db \
