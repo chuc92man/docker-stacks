@@ -10,20 +10,23 @@ FROM jupyter/minimal-notebook:4cdbc9cdb7d1
 RUN pip install --no-cache-dir nbgitpuller
 
 # Data Cube installation
-RUN conda create --yes --name cubeenv python=3.6 datacube=1.6.2 && \
+RUN conda create --yes --name cubeenv python=3.6 \
+	datacube=1.6.2 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
 
 # Downgrade the following packages
-RUN conda install --quiet --yes --name cubeenv gdal=2.3.3 \
+RUN conda install --quiet --yes --name cubeenv \
+	gdal=2.3.3 \
 	sqlalchemy=1.2.18 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
-RUN conda install --quiet --yes --name cubeenv descartes=1.1.0 \
+RUN conda install --quiet --yes --name cubeenv \
+	descartes=1.1.0 \
 	folium=0.8.3 \
 	geopandas=0.4.1 \
 	hdmedians=0.13 \
