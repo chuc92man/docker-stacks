@@ -50,4 +50,5 @@ A few things need to be finished:
 - Persistence of user data, including Jupyter Notebooks
 - Use of a ConfigMap for `.datacube.conf`
 - Automatic Open Data Cube DB initialization and sample product indexing
+- Workaround for `nbgitpuller` to pull external references too (e.g. the utils folder under https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
