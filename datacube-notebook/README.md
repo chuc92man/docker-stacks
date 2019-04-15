@@ -44,3 +44,10 @@ db_username: postgres
 # A blank password will fall back to default postgres driver authentication, such as reading your ~/.pgpass file.
 db_password: localuser1234
 ```
+
+## TODO
+A few things need to be finished:
+- Persistence of user data, including Jupyter Notebooks
+- Use of a ConfigMap for `.datacube.conf`
+- Automatic Open Data Cube DB initialization and sample product indexing
+- Production-ready configuration example for PostgreSQL, including persistence/replication
