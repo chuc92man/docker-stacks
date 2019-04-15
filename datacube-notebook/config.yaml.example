@@ -1,10 +1,10 @@
 proxy:
-  secretToken: "<generate with $(openssl rand -hex 32)>"
+  secretToken: "<generate one with $(openssl rand -hex 32)>"
 
 singleuser:
   image:
-    name: <registry>/datacube-notebook
-    tag: <tag>
+    name: localhost:32000/datacube-notebook
+    tag: v1.0.7
   defaultUrl: "/lab"
   extraEnv:
     EDITOR: "vim"
@@ -21,15 +21,15 @@ hub:
 ingress:
   enabled: true
   hosts:
-    - <hostname>
+    - 10.21.14.25.xip.io
 
 auth:
   type: github
   github:
-    clientId: "<clientId>"
-    clientSecret: "<clientSecret>"
-    callbackUrl: "http://<hostname>/hub/oauth_callback"
+    clientId: "<provide the clientId frm GitHub>"
+    clientSecret: "<provide the clientSecret from GitHub>"
+    callbackUrl: "http://10.21.14.25.xip.io/hub/oauth_callback"
   admin:
     access: true
     users:
-      - <GitHub username>
+      - luigidifraia
