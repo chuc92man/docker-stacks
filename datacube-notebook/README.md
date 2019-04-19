@@ -53,6 +53,28 @@ The resulting environment will look like the following one:
 
 ![Example Notebook](JupyterHub_Notebook.png)
 
+## WIP
+### Horizontal scaling with Dask
+An experimental integration for [Dask](https://dask.org/) is being worked at. To try it, simply create a *config-dask.yaml* file using the [config-dask.yaml.example](config-dask.yaml.example) provided. At that point, you might want to start the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) deployment with:
+
+```
+RELEASEDASK=dask
+NAMESPACEDASK=dask
+
+helm upgrade --install $RELEASEDASK stable/dask \
+  --namespace $NAMESPACEDASK \
+  --values config-dask.yaml
+```
+
+From within a Notebook you can then instantiate a Dask distributed client with:
+
+```
+import dask
+from dask.distributed import Client
+client = Client('dask-scheduler.dask.svc.cluster.local:8786')
+client
+```
+
 ## TODO
 A few things need to be finished and/or added, in particular:
 - Persistence of user data, including Jupyter Notebooks
@@ -60,5 +82,5 @@ A few things need to be finished and/or added, in particular:
 - Automatic Open Data Cube DB initialization and sample product indexing
 - Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
-- Deployment configuration for a [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) to scale horizontally
+- Production-ready configuration example for a Dask cluster to scale horizontally
 - Example EO Notebooks, especially *mean value* calculations that leverage Dask
