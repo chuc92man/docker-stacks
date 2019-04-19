@@ -47,6 +47,8 @@ db_password: localuser1234
 
 The resulting environment will look like the following one:
 
+![Example Server Starting](JupyterHub_Server_Starting.png)
+
 ![Example Terminal](JupyterHub_Terminal.png)
 
 ![Example Notebook](JupyterHub_Notebook.png)
