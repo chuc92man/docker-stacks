@@ -49,6 +49,13 @@ The resulting environment will look like the following one:
 
 ![Example Server Starting](JupyterHub_Server_Starting.png)
 
+From within a Terminal, you might then want to initialize the Open Data Cube DB with:
+
+```
+source activate cubeenv
+datacube -v system init
+```
+
 ![Example Terminal](JupyterHub_Terminal.png)
 
 ![Example Notebook](JupyterHub_Notebook.png)
