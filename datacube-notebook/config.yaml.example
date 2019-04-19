@@ -1,6 +1,7 @@
 proxy:
   secretToken: "<generate one with $(openssl rand -hex 32)>"
 
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#use-jupyterlab-by-default
 singleuser:
   image:
     name: localhost:32000/datacube-notebook
@@ -18,11 +19,13 @@ hub:
     jupyterlab: |
       c.Spawner.cmd = ['jupyter-labhub']
 
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/advanced.html#ingress
 ingress:
   enabled: true
   hosts:
     - 10.21.14.25.xip.io
 
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#github
 auth:
   type: github
   github:
