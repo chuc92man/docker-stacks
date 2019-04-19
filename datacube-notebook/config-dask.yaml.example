@@ -1,6 +1,93 @@
-jupyter:
-  enabled: false
+# nameOverride: dask
+# fullnameOverride: dask
+
+scheduler:
+  name: scheduler
+  image:
+    repository: "daskdev/dask"
+    tag: 1.1.0
+    pullPolicy: IfNotPresent
+  replicas: 1
+  serviceType: "ClusterIP"
+  servicePort: 8786
+  resources: {}
+    # limits:
+    #   cpu: 1.8
+    #   memory: 6G
+    # requests:
+    #   cpu: 1.8
+    #   memory: 6G
+  tolerations: []
+  nodeSelector: {}
+  affinity: {}
+
+webUI:
+  name: webui
+  servicePort: 8787
 
 worker:
+  name: worker
+  image:
+    repository: "daskdev/dask"
+    tag: 1.1.0
+    pullPolicy: IfNotPresent
+  replicas: 3
+  aptPackages: >-
+  default_resources:  # overwritten by resource limits if they exist
+    cpu: 1
+    memory: "4GiB"
   env:
-    -  EXTRA_CONDA_PACKAGES: datacube=1.6.2 descartes=1.1.0 folium=0.8.3 gdal=2.3.3 geopandas=0.4.1 hdmedians=0.13 ipyleaflet=0.10.1 rasterstats=0.13.1 scikit-image=0.15.0 scikit-learn=0.20.3 seaborn=0.9.0 sqlalchemy=1.2.18 -c conda-forge
+    # - name: EXTRA_CONDA_PACKAGES
+    #   value: >-
+    #     datacube=1.6.2
+    #     descartes=1.1.0
+    #     folium=0.8.3
+    #     gdal=2.3.3
+    #     geopandas=0.4.1
+    #     hdmedians=0.13
+    #     ipyleaflet=0.10.1
+    #     rasterstats=0.13.1
+    #     scikit-image=0.15.0
+    #     scikit-learn=0.20.3
+    #     seaborn=0.9.0
+    #     sqlalchemy=1.2.18
+    #     -c conda-forge
+    # - name: EXTRA_PIP_PACKAGES
+    #   value: s3fs dask-ml --upgrade
+  resources: {}
+    # limits:
+    #   cpu: 1
+    #   memory: 3G
+    # requests:
+    #   cpu: 1
+    #   memory: 3G
+  tolerations: []
+  nodeSelector: {}
+  affinity: {}
+
+jupyter:
+  name: jupyter
+  enabled: false
+  image:
+    repository: "daskdev/dask-notebook"
+    tag: 1.1.0
+    pullPolicy: IfNotPresent
+  replicas: 1
+  serviceType: "LoadBalancer"
+  servicePort: 80
+  password: 'sha1:aae8550c0a44:9507d45e087d5ee481a5ce9f4f16f37a0867318c'  # 'dask'
+  env:
+    # - name: EXTRA_CONDA_PACKAGES
+    #   value: numba xarray -c conda-forge
+    # - name: EXTRA_PIP_PACKAGES
+    #   value: s3fs dask-ml --upgrade
+  resources: {}
+    # limits:
+    #   cpu: 2
+    #   memory: 6G
+    # requests:
+    #   cpu: 2
+    #   memory: 6G
+  tolerations: []
+  nodeSelector: {}
+  affinity: {}
