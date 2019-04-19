@@ -45,7 +45,7 @@ db_username: postgres
 db_password: localuser1234
 ```
 
-The resulting environment will look like the following one:
+The resulting environment will look like the following one (JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided):
 
 ![Example Server Starting](JupyterHub_Server_Starting.png)
 
@@ -56,11 +56,21 @@ source activate cubeenv
 datacube -v system init
 ```
 
+Afterwards, you can check the Cube status with:
+
+```
+source activate cubeenv
+datacube -v system check
+```
+
 ![Example Terminal](JupyterHub_Terminal.png)
+
+When using Jupyter Notebook make sure you select the *cubeenv* kernel:
 
 ![Example Notebook](JupyterHub_Notebook.png)
 
 ## WIP
+
 ### Horizontal scaling with Dask
 An experimental integration for [Dask](https://dask.org/) is being worked at. To try it, simply create a *config-dask.yaml* file using the [config-dask.yaml.example](config-dask.yaml.example) provided. At that point, you might want to start the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) deployment with:
 
