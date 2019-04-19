@@ -1,6 +1,8 @@
 # nameOverride: dask
 # fullnameOverride: dask
 
+# based on: https://github.com/helm/charts/blob/master/stable/dask/values.yaml
+
 scheduler:
   name: scheduler
   image:
