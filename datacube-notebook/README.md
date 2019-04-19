@@ -45,11 +45,13 @@ db_username: postgres
 db_password: localuser1234
 ```
 
-The resulting environment will look like the following one (JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided):
+The resulting environment will look like the following one:
+
+![Example Login with GitHub](JupyterHub_GitHub_OAuth.png)
 
 ![Example Server Starting](JupyterHub_Server_Starting.png)
 
-From within a Terminal, you might then want to initialize the Open Data Cube DB with:
+JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided. Therefore, after launching a Terminal, you can initialize the Open Data Cube DB with:
 
 ```
 source activate cubeenv
@@ -72,6 +74,7 @@ When using Jupyter Notebook make sure you select the *cubeenv* kernel:
 ## WIP
 
 ### Horizontal scaling with Dask
+
 An experimental integration for [Dask](https://dask.org/) is being worked at. To try it, simply create a *config-dask.yaml* file using the [config-dask.yaml.example](config-dask.yaml.example) provided. At that point, you might want to start the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) deployment with:
 
 ```
@@ -93,6 +96,7 @@ client
 ```
 
 ## TODO
+
 A few things need to be finished and/or added, in particular:
 - Persistence of user data, including Jupyter Notebooks
 - Use of a ConfigMap for `.datacube.conf`
