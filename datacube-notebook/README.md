@@ -52,9 +52,11 @@ The resulting environment will look like the following one:
 ![Example Notebook](JupyterHub_Notebook.png)
 
 ## TODO
-A few things need to be finished:
+A few things need to be finished and/or added, in particular:
 - Persistence of user data, including Jupyter Notebooks
 - Use of a ConfigMap for `.datacube.conf`
 - Automatic Open Data Cube DB initialization and sample product indexing
 - Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
+- Deployment configuration for a [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) to scale horizontally
+- Example EO Notebooks, especially *mean value* calculations that leverage Dask
