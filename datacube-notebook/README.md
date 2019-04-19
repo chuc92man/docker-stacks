@@ -35,7 +35,7 @@ The corresponding test configuration, `/home/jovyan/.datacube.conf`, would then 
 db_database: datacube
 
 # A blank host will use a local socket. Specify a hostname (such as localhost) to use TCP.
-db_hostname: datacubedb-postgresql
+db_hostname: datacubedb-postgresql.datacubedb.svc.cluster.local
 
 # Credentials are optional: you might have other Postgres authentication configured.
 # The default username is the current user id
