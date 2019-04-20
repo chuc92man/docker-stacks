@@ -40,5 +40,14 @@ RUN conda install --quiet --yes --name cubeenv \
 	fix-permissions /home/$NB_USER
 
 # Make the cubeenv kernel available in Jupyter
-RUN conda install --quiet --yes nb_conda_kernels
-RUN conda install --quiet --yes --name cubeenv ipykernel
+RUN conda install --quiet --yes nb_conda_kernels && \
+	conda install --quiet --yes --name cubeenv ipykernel && \
+	conda clean -tipsy && \
+	fix-permissions $CONDA_DIR && \
+	fix-permissions /home/$NB_USER
+
+# Enable Lab extensions
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+	jupyter labextension install jupyter-leaflet && \
+	fix-permissions $CONDA_DIR && \
+	fix-permissions /home/$NB_USER
