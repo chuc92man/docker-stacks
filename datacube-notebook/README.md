@@ -1,11 +1,19 @@
 # Jupyter Notebook Open Data Cube Stack
 
-Open Data Cube Jupyter Notebook Stack.
+[Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack. Please visit the [documentation site](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for help using and contributing to this repo.
 
-Should dependencies break over time, an [environment.yml.example](environment.yml.example) was provided to replicate the build at the time this repo was created.
+## Building
+
+The custom Docker image for Open Data Cube can be built as per below:
+
+`docker build -t datacube-notebook .`
+
+Should dependencies break over time, a Miniconda [environment.yml.example](environment.yml.example) was provided to replicate the Docker image build at the time this repo was created.
 
 ## Testing/Development set-up
-Once the Docker image is built, tagged and made available through a Docker registry, simply create a *config.yaml* file using the [config.yaml.example](config.yaml.example) provided. At that point, you might want to start the JupyterHub deployment with:
+
+Once the Docker image is built, tagged, and made available through a Docker registry, it's necessary to create a *config.yaml* file. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). You can use the [config.yaml.example](config.yaml.example) that was provided as a quick reference for demonstration purposes.\
+Once done, you might want to start the JupyterHub deployment with:
 
 ```
 RELEASE=jhub
