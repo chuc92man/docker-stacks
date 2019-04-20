@@ -12,7 +12,7 @@ Should dependencies break over time, a Miniconda [environment.yml.example](envir
 
 ## Testing/Development set-up
 
-Once the Docker image is built, tagged, and made available through a Docker registry, it's necessary to create a *config.yaml* file. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). You can use the [config.yaml.example](config.yaml.example) that was provided as a quick reference for demonstration purposes.\
+Once the Docker image is built, tagged, and made available through a Docker registry, it's necessary to create a *config.yaml* file. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). You can use the [config.yaml.example](config.yaml.example) file, provided as a quick reference for demonstration purposes.\
 Once done, you might want to start the JupyterHub deployment with:
 
 ```
