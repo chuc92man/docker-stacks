@@ -113,6 +113,7 @@ A few things need to be finished and/or added, in particular:
 - Persistence of user data, including Jupyter Notebooks
 - Use of a ConfigMap for `.datacube.conf`
 - Disable the LoadBalancer service when an Ingress is used instead (service/proxy-public)
+- Explore *cert-manager* for secure connections with certificate auto-renewal
 - Automatic Open Data Cube DB initialization and sample product indexing (this is a one-off operation that requires documenting and possibly making configuration files/prepare scripts available in the Docker image)
 - Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
