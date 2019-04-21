@@ -116,6 +116,7 @@ A few things need to be finished and/or added, in particular:
 - Automatic Open Data Cube DB initialization and sample product indexing (this is a one-off operation that requires documenting and possibly making configuration files/prepare scripts available in the Docker image)
 - Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
+- Explore [Dask Kubernetes](http://kubernetes.dask.org/en/latest/)
 - Production-ready configuration example for a Dask cluster to scale horizontally
 - Expose the [Dask dashboard](http://dask-scheduler.dask.svc.cluster.local:8787/status), e.g. through and Ingress
 - Example EO Notebooks, especially *mean value* calculations that leverage Dask
