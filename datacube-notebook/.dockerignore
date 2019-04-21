@@ -10,4 +10,5 @@ JupyterHub_Terminal.png
 # Misc files
 config.yaml.example
 config-dask.yaml.example
+dask-webui-ingress.yaml.example
 environment.yml.example
