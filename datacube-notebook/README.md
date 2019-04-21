@@ -107,6 +107,10 @@ client = Client('dask-scheduler.dask.svc.cluster.local:8786')
 client
 ```
 
+To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) you might want to deploy an *Ingress*, using the [dask-webui-ingress.yaml.example](dask-webui-ingress.yaml.example) file as a quick reference:
+
+`kubectl apply -f dask-webui-ingress.yaml`
+
 ## TODO
 
 A few things need to be finished and/or added, in particular:
@@ -119,5 +123,4 @@ A few things need to be finished and/or added, in particular:
 - Production-ready configuration example for PostgreSQL, including persistence/replication
 - Explore [Dask Kubernetes](http://kubernetes.dask.org/en/latest/)
 - Production-ready configuration example for a Dask cluster to scale horizontally
-- Expose the [Dask dashboard](http://dask-scheduler.dask.svc.cluster.local:8787/status), e.g. through and Ingress
 - Example EO Notebooks, especially *mean value* calculations that leverage Dask
