@@ -117,4 +117,5 @@ A few things need to be finished and/or added, in particular:
 - Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
 - Production-ready configuration example for a Dask cluster to scale horizontally
+- Expose the [Dask dashboard](http://dask-scheduler.dask.svc.cluster.local:8787/status), e.g. through and Ingress
 - Example EO Notebooks, especially *mean value* calculations that leverage Dask
