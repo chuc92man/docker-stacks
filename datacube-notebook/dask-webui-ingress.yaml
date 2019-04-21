@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dask
+  namespace: dask
+spec:
+  rules:
+  - host: dask.10.21.14.25.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: dask-scheduler
+          servicePort: 8787
+        path: /
