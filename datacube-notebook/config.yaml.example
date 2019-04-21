@@ -24,7 +24,7 @@ hub:
 ingress:
   enabled: true
   hosts:
-    - 10.21.14.25.xip.io
+    - jupyterhub.10.21.14.25.xip.io
 
 # see: https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#github
 auth:
