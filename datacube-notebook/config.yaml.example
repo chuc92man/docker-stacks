@@ -5,8 +5,8 @@ proxy:
 #      https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#using-nbgitpuller-to-synchronize-a-folder
 singleuser:
   image:
-    name: localhost:32000/datacube-notebook
-    tag: v1.0.7
+    name: luigidifraia/datacube-notebook
+    tag: v1.0.0-alpha
   defaultUrl: "/lab"
   extraEnv:
     EDITOR: "vim"

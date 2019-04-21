@@ -4,7 +4,9 @@
 
 ## Building
 
-The custom Docker image for Open Data Cube can be built as per below:
+Pre-built images can be pulled from [Docker Hub](https://hub.docker.com/r/luigidifraia/datacube-notebook).
+
+A custom Docker image for Open Data Cube can be built from this repo as per below:
 
 `docker build -t datacube-notebook .`
 
@@ -12,7 +14,9 @@ Should dependencies break over time, a Miniconda [environment.yml.example](envir
 
 ## Testing/Development set-up
 
-Once the Docker image is built, tagged, and made available through a Docker registry, it's necessary to create a *config.yaml* file. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). You can use the [config.yaml.example](config.yaml.example) file, provided as a quick reference for demonstration purposes.\
+For deployment purposes it's necessary to create a *config.yaml* file specific to the Kubernetes cluster where [JupyterHub](https://jupyter.org/hub) is being deployed. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference).\
+You can use the [config.yaml.example](config.yaml.example) file as a quick reference for testing purposes.
+
 Once done, you might want to start the JupyterHub deployment with:
 
 ```
