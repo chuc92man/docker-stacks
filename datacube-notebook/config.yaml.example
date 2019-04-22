@@ -32,7 +32,7 @@ auth:
   github:
     clientId: "<provide the clientId from GitHub>"
     clientSecret: "<provide the clientSecret from GitHub>"
-    callbackUrl: "http://10.21.14.25.xip.io/hub/oauth_callback"
+    callbackUrl: "http://jupyterhub.10.21.14.25.xip.io/hub/oauth_callback"
   admin:
     access: true
     users:
