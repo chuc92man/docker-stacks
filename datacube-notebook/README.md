@@ -1,10 +1,10 @@
 # Jupyter Notebook Open Data Cube Stack
 
-[Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack. Please visit the [documentation site](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for help using and contributing to this repo.
+Alpha version of an [Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack. Please visit the [documentation site](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for help using and contributing to this repo.
 
 ## Building
 
-Pre-built images can be pulled from [Docker Hub](https://hub.docker.com/r/luigidifraia/datacube-notebook).
+Pre-built images can be conveniently pulled from [Docker Hub](https://hub.docker.com/r/luigidifraia/datacube-notebook).
 
 A custom Docker image for Open Data Cube can be built from this repo as per below:
 
