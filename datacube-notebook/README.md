@@ -10,12 +10,12 @@ A custom Docker image for Open Data Cube can be built from this repo as per belo
 
 `docker build -t datacube-notebook .`
 
-Should dependencies break over time, a Miniconda [environment.yml.example](environment.yml.example) was provided to replicate the Docker image build at the time this repo was created.
+Should dependencies break over time, a Miniconda [environment.yml.example](examples/environment.yml.example) was provided to replicate the Docker image build at the time this repo was created.
 
 ## Testing/Development set-up
 
 For deployment purposes it's necessary to create a *config.yaml* file specific to the Kubernetes cluster where [JupyterHub](https://jupyter.org/hub) is being deployed. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference).\
-You can use the [config.yaml.example](config.yaml.example) file as a quick reference for testing purposes.
+You can use the [config.yaml.example](examples/config.yaml.example) file as a quick reference for testing purposes.
 
 Once done, you might want to start the JupyterHub deployment with:
 
@@ -63,7 +63,7 @@ The resulting environment will look like the following one:
 
 ![Example Server Starting](media/JupyterHub_Server_Starting.png)
 
-JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided.
+JupyterLab is enabled by default in the [config.yaml.example](examples/config.yaml.example) provided.
 
 ![Example JupyterLab](media/JupyterHub_Lab_Launcher.png)
 
@@ -91,7 +91,7 @@ When using Jupyter Notebook make sure you select the *cubeenv* kernel:
 
 ### Horizontal scaling with Dask
 
-An experimental integration for [Dask](https://dask.org/) is being worked at. To try it, simply create a *config-dask.yaml* file using the [config-dask.yaml.example](config-dask.yaml.example) provided. At that point, you might want to start the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) deployment with:
+An experimental integration for [Dask](https://dask.org/) is being worked at. To try it, simply create a *config-dask.yaml* file using the [config-dask.yaml.example](examples/config-dask.yaml.example) provided. At that point, you might want to start the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) deployment with:
 
 ```
 RELEASEDASK=dask
@@ -111,7 +111,7 @@ client = Client('dask-scheduler.dask.svc.cluster.local:8786')
 client
 ```
 
-To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) you might want to deploy an *Ingress*, using the [dask-webui-ingress.yaml.example](dask-webui-ingress.yaml.example) file as a quick reference:
+To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) you might want to deploy an *Ingress*, using the [dask-webui-ingress.yaml.example](examples/dask-webui-ingress.yaml.example) file as a quick reference:
 
 `kubectl apply -f dask-webui-ingress.yaml`
 

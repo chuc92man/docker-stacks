@@ -4,8 +4,5 @@ README.md
 # Media file folder
 media
 
-# Example setup files
-config.yaml.example
-config-dask.yaml.example
-dask-webui-ingress.yaml.example
-environment.yml.example
+# Example setup file folder
+examples
