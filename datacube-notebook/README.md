@@ -10,7 +10,7 @@ A custom Docker image for Open Data Cube can be built from this repo as per belo
 
 `docker build -t datacube-notebook .`
 
-Should dependencies break over time, a Miniconda [environment.yml.example](examples/environment.yml.example) was provided to replicate the Docker image build at the time this repo was created.
+Should dependencies break over time, a Miniconda [environment.yml](environment.yml) was provided to replicate the Docker image build at the time this repo was created.
 
 ## Testing/Development set-up
 
