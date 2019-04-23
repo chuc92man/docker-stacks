@@ -85,7 +85,7 @@ datacube -v system check
 
 When using Jupyter Notebook make sure you select the *cubeenv* kernel:
 
-![Example Notebook](JupyterHub_Notebook.png)
+![Example Notebook](media/JupyterHub_Notebook.png)
 
 ## WIP
 
