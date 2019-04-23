@@ -1,13 +1,10 @@
 # Documentation
 README.md
 
-# Media files
-JupyterHub_GitHub_OAuth.png
-JupyterHub_Server_Starting.png
-JupyterHub_Notebook.png
-JupyterHub_Terminal.png
+# Media file folder
+media
 
-# Misc files
+# Example setup files
 config.yaml.example
 config-dask.yaml.example
 dask-webui-ingress.yaml.example

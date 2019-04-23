@@ -59,11 +59,15 @@ db_password: localuser1234
 
 The resulting environment will look like the following one:
 
-![Example Login with GitHub](JupyterHub_GitHub_OAuth.png)
+![Example Login with GitHub](media/JupyterHub_GitHub_OAuth.png)
 
-![Example Server Starting](JupyterHub_Server_Starting.png)
+![Example Server Starting](media/JupyterHub_Server_Starting.png)
 
-JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided. Therefore, after launching a Terminal, you can initialize the Open Data Cube DB with:
+JupyterLab is enabled by default in the [config.yaml.example](config.yaml.example) provided.
+
+![Example JupyterLab](media/JupyterHub_Lab_Launcher.png)
+
+After launching a Terminal, you can initialize the Open Data Cube DB with:
 
 ```
 source activate cubeenv
@@ -77,7 +81,7 @@ source activate cubeenv
 datacube -v system check
 ```
 
-![Example Terminal](JupyterHub_Terminal.png)
+![Example Terminal](media/JupyterHub_Terminal.png)
 
 When using Jupyter Notebook make sure you select the *cubeenv* kernel:
 
