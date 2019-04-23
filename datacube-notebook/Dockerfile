@@ -1,3 +1,4 @@
+# Refer to https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image
 FROM jupyter/minimal-notebook:4cdbc9cdb7d1
 
 # Get the latest image tag at:
