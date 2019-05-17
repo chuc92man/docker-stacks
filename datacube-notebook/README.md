@@ -118,7 +118,8 @@ To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distribu
 ## TODO
 
 A few things need to be finished and/or added, in particular:
-- Persistence of user data, including Jupyter Notebooks
+- Address the "413 Request Entity Too Large" error occurring in the nginx ingress when trying to save large Notebooks
+- Persistence of user data, including Jupyter Notebooks, possibly with an example that uses a shared [PV](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-storage.html#additional-storage-volumes)
 - Use of a ConfigMap for `.datacube.conf`
 - Disable the LoadBalancer service when an Ingress is used instead (service/proxy-public)
 - Explore *cert-manager* for secure connections with certificate auto-renewal
