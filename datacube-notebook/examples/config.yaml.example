@@ -13,7 +13,7 @@ singleuser:
   lifecycleHooks:
     postStart:
       exec:
-        command: ["gitpuller", "https://github.com/ceos-seo/data_cube_notebooks", "master", "notebooks"]
+        command: ["gitpuller", "https://github.com/frontiersi/odc-sandbox-notebooks", "master", "notebooks"]
 
 hub:
   extraConfig:
