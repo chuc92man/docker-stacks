@@ -37,6 +37,7 @@ NAMESPACEDB=datacubedb
 
 helm upgrade --install $RELEASEDB stable/postgresql \
   --namespace $NAMESPACEDB \
+  --version 3.17.0 \
   --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
@@ -99,6 +100,7 @@ NAMESPACEDASK=dask
 
 helm upgrade --install $RELEASEDASK stable/dask \
   --namespace $NAMESPACEDASK \
+  --version=2.2.0 \
   --values config-dask.yaml
 ```
 
@@ -118,7 +120,6 @@ To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distribu
 ## TODO
 
 A few things need to be finished and/or added, in particular:
-- Address the "413 Request Entity Too Large" error occurring in the nginx ingress when trying to save large Notebooks
 - Persistence of user data, including Jupyter Notebooks, possibly with an example that uses a shared [PV](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-storage.html#additional-storage-volumes)
 - Use of a ConfigMap for `.datacube.conf`
 - Disable the LoadBalancer service when an Ingress is used instead (service/proxy-public)
@@ -129,3 +130,7 @@ A few things need to be finished and/or added, in particular:
 - Explore [Dask Kubernetes](http://kubernetes.dask.org/en/latest/)
 - Production-ready configuration example for a Dask cluster to scale horizontally
 - Example EO Notebooks, especially *mean value* calculations that leverage Dask
+
+## Known issues
+
+- With microk8s's default ingress a "413 Request Entity Too Large" error occurs when trying to save large Notebooks
