@@ -14,8 +14,7 @@ Should dependencies break over time, a Miniconda [environment.yml](environment.y
 
 ## Testing/Development set-up
 
-It's necessary to create a *config.yaml* file specific to the Kubernetes cluster where [JupyterHub](https://jupyter.org/hub) is being deployed. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference).\
-The [config.yaml.example](examples/config.yaml.example) file can be used as a quick-reference guide.
+It's necessary to create a *config.yaml* file specific to the Kubernetes cluster where [JupyterHub](https://jupyter.org/hub) is being deployed. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [config.yaml.example](examples/config.yaml.example) file can be used as a quick-reference guide.
 
 Once a *config.yaml* file is put together, the deployment of JupyterHub can be started with:
 
@@ -41,8 +40,7 @@ helm upgrade --install $RELEASEDB stable/postgresql \
   --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
-It is also necessary to create a corresponding configuration file *datacube-conf.yaml* that is mounted as */etc/datacube.conf* through a ConfigMap named `datacube-conf`.\
-The [datacube-conf.yaml.example](examples/datacube-conf.yaml.example) file can be used as a quick-reference guide.
+It is also necessary to create a corresponding configuration file *datacube-conf.yaml* that is mounted as */etc/datacube.conf* through a ConfigMap named `datacube-conf`. The [datacube-conf.yaml.example](examples/datacube-conf.yaml.example) file can be used as a quick-reference guide.
 
 Once a *datacube-conf.yaml* file is put together, the corresponding ConfigMap can be set up with:
 
@@ -82,8 +80,7 @@ When using Jupyter Notebook make sure the *cubeenv* kernel is selected:
 
 ### Horizontal scaling with Dask
 
-An experimental integration for [Dask](https://dask.org/) is being worked at. To try it out, a *config-dask.yaml* file has to be created.\
-The [config-dask.yaml.example](examples/config-dask.yaml.example) file can be used as a quick-reference guide.
+An experimental integration for [Dask](https://dask.org/) is being worked at. To try it out, a *config-dask.yaml* file has to be created. The [config-dask.yaml.example](examples/config-dask.yaml.example) file can be used as a quick-reference guide.
 
 Once a *config-dask.yaml* file is put together, the deployment of the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) can be started with:
 
@@ -106,7 +103,9 @@ client = Client('dask-scheduler.dask.svc.cluster.local:8786')
 client
 ```
 
-To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an *Ingress* might have to be deployed (e.g. if not using a public cloud load balancer), using the [dask-webui-ingress.yaml.example](examples/dask-webui-ingress.yaml.example) file as a quick-reference guide:
+To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an *Ingress* might have to be deployed (e.g. if not using a public cloud's load balancer), using a *dask-webui-ingress.yaml* file. The [dask-webui-ingress.yaml.example](examples/dask-webui-ingress.yaml.example) file can be used as a quick-reference guide.
+
+Once a *dask-webui-ingress.yaml* is put together, the *Ingress* can be set up with:
 
 `kubectl apply -f dask-webui-ingress.yaml`
 
