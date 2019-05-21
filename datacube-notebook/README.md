@@ -134,7 +134,6 @@ A few things need to be finished and/or added, in particular:
 - Disable the LoadBalancer service when an Ingress is used instead (service/proxy-public)
 - Explore *cert-manager* for secure connections with certificate auto-renewal
 - Automatic Open Data Cube DB initialization and sample product indexing (this is a one-off operation that requires documenting and possibly making configuration files/prepare scripts available in the Docker image)
-- Workaround for `nbgitpuller` to pull external references too, e.g. the utils folder under [data_cube_notebooks](https://github.com/ceos-seo/data_cube_notebooks)
 - Production-ready configuration example for PostgreSQL, including persistence/replication
 - Explore [Dask Kubernetes](http://kubernetes.dask.org/en/latest/)
 - Production-ready configuration example for a Dask cluster to scale horizontally
