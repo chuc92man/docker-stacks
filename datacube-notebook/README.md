@@ -41,22 +41,9 @@ helm upgrade --install $RELEASEDB stable/postgresql \
   --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
 ```
 
-The corresponding test configuration, `/home/jovyan/.datacube.conf`, would then look as per below:
+The corresponding configuration, `/etc/datacube.conf`, has to be provided through a ConfigMap, `datacube-conf`, using the [datacube-conf.yaml.example](examples/datacube-conf.yaml.example) file as a quick reference:
 
-```
-[datacube]
-db_database: datacube
-
-# A blank host will use a local socket. Specify a hostname (such as localhost) to use TCP.
-db_hostname: datacubedb-postgresql.datacubedb.svc.cluster.local
-
-# Credentials are optional: you might have other Postgres authentication configured.
-# The default username is the current user id
-db_username: postgres
-
-# A blank password will fall back to default postgres driver authentication, such as reading your ~/.pgpass file.
-db_password: localuser1234
-```
+`microk8s.kubectl apply -f datacube-conf.yaml`
 
 The resulting environment will look like the following one:
 
@@ -117,11 +104,26 @@ To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distribu
 
 `kubectl apply -f dask-webui-ingress.yaml`
 
+## Cleaning up
+
+```
+helm delete $RELEASE --purge
+microk8s.kubectl delete namespace $NAMESPACE
+
+helm delete $RELEASEDB --purge
+microk8s.kubectl delete namespace $NAMESPACEDB
+
+kubectl delete -f dask-webui-ingress.yaml
+
+helm delete $RELEASEDASK --purge
+microk8s.kubectl delete namespace $NAMESPACEDASK
+```
+
 ## TODO
 
 A few things need to be finished and/or added, in particular:
 - Persistence of user data, including Jupyter Notebooks, possibly with an example that uses a shared [PV](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-storage.html#additional-storage-volumes)
-- Use of a ConfigMap for `.datacube.conf`
+- ~~Use of a ConfigMap for `.datacube.conf`~~
 - Disable the LoadBalancer service when an Ingress is used instead (service/proxy-public)
 - Explore *cert-manager* for secure connections with certificate auto-renewal
 - Automatic Open Data Cube DB initialization and sample product indexing (this is a one-off operation that requires documenting and possibly making configuration files/prepare scripts available in the Docker image)

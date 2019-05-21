@@ -8,12 +8,19 @@ singleuser:
     name: luigidifraia/datacube-notebook
     tag: v1.0.0-alpha
   defaultUrl: "/lab"
-  extraEnv:
-    EDITOR: "vim"
   lifecycleHooks:
     postStart:
       exec:
         command: ["gitpuller", "https://github.com/frontiersi/odc-sandbox-notebooks", "master", "notebooks"]
+  storage:
+    extraVolumes:
+      - name: datacube-conf
+        configMap:
+          name: datacube-conf
+    extraVolumeMounts:
+      - name: datacube-conf
+        mountPath: /etc/datacube.conf
+        subPath: datacube.conf
 
 hub:
   extraConfig:
