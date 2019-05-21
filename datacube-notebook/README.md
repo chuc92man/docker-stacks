@@ -2,9 +2,9 @@
 
 Alpha version of an [Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack. Please visit the [documentation site](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for help using and contributing to this repo.
 
-## Building
+## Building the Docker image
 
-Pre-built images can be conveniently pulled from [Docker Hub](https://hub.docker.com/r/luigidifraia/datacube-notebook).
+For most users pre-built Docker images will work just fine. These that can be conveniently pulled from [Docker Hub](https://hub.docker.com/r/luigidifraia/datacube-notebook).
 
 A custom Docker image for Open Data Cube can be built from this repo as per below:
 
@@ -12,7 +12,7 @@ A custom Docker image for Open Data Cube can be built from this repo as per belo
 
 Should dependencies break over time, a Miniconda [environment.yml](environment.yml) was provided to replicate the Docker image build at the time this repo was created.
 
-## Testing/Development set-up
+## Deployment
 
 It's necessary to create a *config.yaml* file specific to the Kubernetes cluster where [JupyterHub](https://jupyter.org/hub) is being deployed. For help doing so, please visit the [documentation reference](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [config.yaml.example](examples/config.yaml.example) file can be used as a quick-reference guide.
 
@@ -105,7 +105,7 @@ client
 
 To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an *Ingress* might have to be deployed (e.g. if not using a public cloud's load balancer), using a *dask-webui-ingress.yaml* file. The [dask-webui-ingress.yaml.example](examples/dask-webui-ingress.yaml.example) file can be used as a quick-reference guide.
 
-Once a *dask-webui-ingress.yaml* is put together, the *Ingress* can be set up with:
+Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress* can be started with:
 
 `kubectl apply -f dask-webui-ingress.yaml`
 
