@@ -19,6 +19,7 @@ RUN conda create --yes --name cubeenv python=3.6 \
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
 RUN conda install --quiet --yes --name cubeenv \
+	boto3=1.9.153 \
 	descartes=1.1.0 \
 	folium=0.9.0 \
 	geopandas=0.5.0 \
