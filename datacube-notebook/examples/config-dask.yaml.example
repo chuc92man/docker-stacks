@@ -41,6 +41,7 @@ worker:
   env:
     - name: EXTRA_CONDA_PACKAGES
       value: >-
+        boto3=1.9.153
         datacube=1.7
         descartes=1.1.0
         folium=0.9.0
