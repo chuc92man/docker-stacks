@@ -141,4 +141,4 @@ A few things need to be finished and/or added, in particular:
 
 ## Known issues
 
-- Using microk8s's default ingress, a "413 Request Entity Too Large" error occurs when trying to save large Notebooks
+- ~~Using default ingress settings, a "413 Request Entity Too Large" error occurs when trying to save large Notebooks~~

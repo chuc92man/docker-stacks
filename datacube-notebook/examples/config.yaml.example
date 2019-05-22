@@ -32,6 +32,8 @@ ingress:
   enabled: true
   hosts:
     - jupyterhub.10.21.14.25.xip.io
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
 
 # see: https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#github
 auth:
