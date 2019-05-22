@@ -114,15 +114,15 @@ Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress*
 If you wish to undo changes to your Kubernetes cluster, simply issue the following commands:
 
 ```
-kubectl delete -f datacube-conf.yaml
 helm delete $RELEASE --purge
+kubectl delete -f datacube-conf.yaml
 kubectl delete namespace $NAMESPACE
 
 helm delete $RELEASEDB --purge
 kubectl delete namespace $NAMESPACEDB
 
-kubectl delete -f dask-webui-ingress.yaml
 helm delete $RELEASEDASK --purge
+kubectl delete -f dask-webui-ingress.yaml
 kubectl delete namespace $NAMESPACEDASK
 ```
 
