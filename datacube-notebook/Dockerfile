@@ -12,29 +12,22 @@ RUN pip install --no-cache-dir nbgitpuller
 
 # Data Cube installation (Python 3.6 is recommended)
 RUN conda create --yes --name cubeenv python=3.6 \
-	datacube=1.6.2 && \
-	conda clean -tipsy && \
-	fix-permissions $CONDA_DIR && \
-	fix-permissions /home/$NB_USER
-
-# Downgrade the following packages
-RUN conda install --quiet --yes --name cubeenv \
-	gdal=2.3.3 \
-	sqlalchemy=1.2.18 && \
+	datacube=1.7 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
 RUN conda install --quiet --yes --name cubeenv \
+	boto3=1.9.153 \
 	descartes=1.1.0 \
-	folium=0.8.3 \
-	geopandas=0.4.1 \
+	folium=0.9.0 \
+	geopandas=0.5.0 \
 	hdmedians=0.13 \
-	ipyleaflet=0.10.1 \
+	ipyleaflet=0.10.2 \
 	rasterstats=0.13.1 \
 	scikit-image=0.15.0 \
-	scikit-learn=0.20.3 \
+	scikit-learn=0.21.1 \
 	seaborn=0.9.0 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \

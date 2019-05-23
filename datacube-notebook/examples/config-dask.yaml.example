@@ -33,7 +33,7 @@ worker:
     repository: "daskdev/dask"
     tag: 1.1.0
     pullPolicy: IfNotPresent
-  replicas: 3
+  replicas: 1
   aptPackages: >-
   default_resources:  # overwritten by resource limits if they exist
     cpu: 1
