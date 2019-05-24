@@ -28,7 +28,9 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
   --values config.yaml
 ```
 
-The underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql) as follows (make sure the PV claim can be satisfied for data persistence, otherwise, for testing purposes only, add the option `persistence.enabled=false`):
+The underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql). For this purpose, a *config-postgresql.yaml* file has to be created. The [config-postgresql.yaml.example](examples/configuration/config-postgresql.yaml.example) file can be used as a quick-reference guide.
+
+Once a *config-postgresql.yaml* file is put together, the deployment of the PostgreSQL database can be started with:
 
 ```
 RELEASEDB=datacubedb
@@ -37,14 +39,14 @@ NAMESPACEDB=datacubedb
 helm upgrade --install $RELEASEDB stable/postgresql \
   --namespace $NAMESPACEDB \
   --version 3.17.0 \
-  --set postgresqlPassword=localuser1234,postgresqlDatabase=datacube
+  --values config-postgresql.yaml
 ```
 
 It is also necessary to create a corresponding configuration file *datacube-conf.yaml* that is mounted as */etc/datacube.conf* through a ConfigMap named `datacube-conf`. The [datacube-conf.yaml.example](examples/configuration/datacube-conf.yaml.example) file can be used as a quick-reference guide.
 
 Once a *datacube-conf.yaml* file is put together, the corresponding ConfigMap can be set up with:
 
-`microk8s.kubectl apply -f datacube-conf.yaml`
+`kubectl apply -f datacube-conf.yaml`
 
 The resulting environment will look like the following one:
 
@@ -120,6 +122,10 @@ Here's a screenshot from the Notebook itself:
 And here's a screenshot from Dask's Dashboard during the Max/Min calculation:
 
 ![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min.png)
+
+## Revision control!
+
+Readers would have noticed that the above setup instructions insist on the creation of YAML files. The reason for creating YAML files, rather than e.g. passing values to the Helm client using the `--set` option, is that such files should be put under revision control, so that they can be used to reproduce a working setup programmatically.
 
 ## Cleaning up
 
