@@ -113,7 +113,11 @@ Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress*
 
 A sample Notebook is provided to validate the setup of the Dask cluster, [satellite-imagery-geotiff-distributed.ipynb](examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb).
 
+Here's a screenshot from the Notebook itself:
+
 ![Example Notebook for Dask](media/JupyterHub_Dask_Distributed_Notebook.png)
+
+And here's a screenshot from Dask's Dashboard during the Max/Min calculation:
 
 ![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min.png)
 
