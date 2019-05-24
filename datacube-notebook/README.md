@@ -76,9 +76,7 @@ When using Jupyter Notebook make sure the *cubeenv* kernel is selected:
 
 ![Example Notebook](media/JupyterHub_Notebook.png)
 
-## WIP
-
-### Horizontal scaling with Dask
+## WIP: Horizontal scaling with Dask
 
 An experimental integration for [Dask](https://dask.org/) is being worked at. To try it out, a *config-dask.yaml* file has to be created. The [config-dask.yaml.example](examples/configuration/config-dask.yaml.example) file can be used as a quick-reference guide.
 
@@ -103,11 +101,15 @@ client = Client('dask-scheduler.dask.svc.cluster.local:8786')
 client
 ```
 
+### Ingress for Dask's Dashboard
+
 To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an *Ingress* might have to be deployed (e.g. if not using a public cloud's load balancer), using a *dask-webui-ingress.yaml* file. The [dask-webui-ingress.yaml.example](examples/configuration/dask-webui-ingress.yaml.example) file can be used as a quick-reference guide.
 
 Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress* can be started with:
 
 `kubectl apply -f dask-webui-ingress.yaml`
+
+### Sample Notebook for Dask's distributed computing
 
 A sample Notebook is provided to validate the setup of the Dask cluster, [satellite-imagery-geotiff-distributed.ipynb](examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb).
 
