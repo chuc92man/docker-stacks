@@ -113,7 +113,7 @@ Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress*
 
 ### Sample Notebook for Dask's distributed computing
 
-A sample Notebook is provided to validate the setup of the Dask cluster, [satellite-imagery-geotiff-distributed.ipynb](examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb).
+A sample Notebook is provided to validate the setup of the Dask cluster, [satellite-imagery-geotiff-distributed.ipynb](examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb). Such Notebook is based on the one provided within Dask's GitHub repo [here](https://github.com/dask/dask-examples/blob/master/applications/satellite-imagery-geotiff.ipynb).
 
 Here's a screenshot from the Notebook itself:
 
