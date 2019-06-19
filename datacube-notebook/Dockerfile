@@ -19,16 +19,21 @@ RUN conda create --yes --name cubeenv python=3.6 \
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
 RUN conda install --quiet --yes --name cubeenv \
-	boto3=1.9.153 \
+	boto3=1.9.171 \
 	descartes=1.1.0 \
-	folium=0.9.0 \
+	folium=0.9.1 \
 	geopandas=0.5.0 \
 	hdmedians=0.13 \
-	ipyleaflet=0.10.2 \
+	ipyleaflet=0.10.5 \
+	matplotlib=3.1.0 \
 	rasterstats=0.13.1 \
+	ruamel=1.0 \
+	ruamel.yaml=0.15.96 \
 	scikit-image=0.15.0 \
-	scikit-learn=0.21.1 \
-	seaborn=0.9.0 && \
+	scikit-learn=0.21.2 \
+	scipy=1.3.0 \
+	seaborn=0.9.0 \
+	shapely=1.6.4 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
