@@ -1,6 +1,8 @@
 # Jupyter Notebook Open Data Cube Stack
 
-Alpha version of an [Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack. Please visit the [documentation site](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for help using and contributing to this repo.
+Alpha version of an [Open Data Cube](https://www.opendatacube.org/) Jupyter Notebook Stack for [Zero to JupyterHub with Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/), that is meant to let users make JupyterHub available to a large group of users, such as the staff and students of a university.
+
+Please visit the [official documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#customize-an-existing-docker-image) for Zero to JupyterHub with Kubernetes if you need help using and contributing to this repo.
 
 ## Building the Docker image
 
