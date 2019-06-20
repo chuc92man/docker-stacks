@@ -5,8 +5,5 @@ docs
 # Miniconda cubeenv environment export
 environment.yml
 
-# Media file folder
-media
-
 # Example setup file folder
 examples
