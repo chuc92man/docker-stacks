@@ -7,7 +7,7 @@ scheduler:
   name: scheduler
   image:
     repository: "luigidifraia/dask"
-    tag: v1.0.1-alpha
+    tag: v1.0.2-alpha
     pullPolicy: IfNotPresent
   replicas: 1
   serviceType: "ClusterIP"
@@ -31,7 +31,7 @@ worker:
   name: worker
   image:
     repository: "luigidifraia/dask"
-    tag: v1.0.1-alpha
+    tag: v1.0.2-alpha
     pullPolicy: IfNotPresent
   replicas: 1
   aptPackages: >-
@@ -41,9 +41,10 @@ worker:
   env:
     - name: EXTRA_CONDA_PACKAGES
       value: >-
-        boto3=1.9.171
+        boto3=1.9.172
         datacube=1.7
         descartes=1.1.0
+        distributed=1.28.1
         folium=0.9.1
         geopandas=0.5.0
         hdmedians=0.13
