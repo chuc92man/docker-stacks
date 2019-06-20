@@ -19,8 +19,10 @@ RUN conda create --yes --name cubeenv python=3.6 \
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
 RUN conda install --quiet --yes --name cubeenv \
-	boto3=1.9.171 \
+	boto3=1.9.172 \
+	dask=1.2.2 \
 	descartes=1.1.0 \
+	distributed=1.28.1 \
 	folium=0.9.1 \
 	geopandas=0.5.0 \
 	hdmedians=0.13 \
@@ -40,7 +42,8 @@ RUN conda install --quiet --yes --name cubeenv \
 
 # Make the cubeenv kernel available in Jupyter
 RUN conda install --quiet --yes nb_conda_kernels && \
-	conda install --quiet --yes --name cubeenv ipykernel && \
+	conda install --quiet --yes --name cubeenv \
+	ipykernel=5.1.1 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
