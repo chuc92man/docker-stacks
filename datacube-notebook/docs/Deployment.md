@@ -105,9 +105,9 @@ Here's a screenshot from the Notebook itself:
 
 ![Example Notebook for Dask](media/JupyterHub_Dask_Distributed_Notebook.png)
 
-And here's a screenshot from Dask's Dashboard during the max/min calculation:
+And here's a screenshot from Dask's Dashboard during the max/min/median calculation:
 
-![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min.png)
+![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min_Median.png)
 
 ## Revision control!
 
