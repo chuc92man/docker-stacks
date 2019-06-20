@@ -1,4 +1,3 @@
-postgresql:
-  postgresqlPassword: localuser1234
-  postgresqlDatabase: datacube
-  #persistence.enabled: false
+postgresqlPassword: localuser1234
+postgresqlDatabase: datacube
+#persistence.enabled: false
