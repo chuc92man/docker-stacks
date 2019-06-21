@@ -126,6 +126,8 @@ worker:
     #   value "us-west-2"
     # - name: AWS_S3_ENDPOINT
     #   value: "s3.acme.com"
+    # - name: AWS_PROFILE
+    #   value: "acme"
 ```
 
 ## Revision control!
