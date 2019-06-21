@@ -61,6 +61,16 @@ worker:
         -c conda-forge
     # - name: EXTRA_PIP_PACKAGES
     #   value: s3fs dask-ml --upgrade
+    - name: AWS_NO_SIGN_REQUEST  # This option might be used for buckets with public access rights. Available since GDAL 2.3.
+      value: "YES"
+    # - name: AWS_ACCESS_KEY_ID
+    #   value: "AKIAIOSFODNN7INVALID"
+    # - name: AWS_SECRET_ACCESS_KEY
+    #   value: "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"
+    # - name: AWS_DEFAULT_REGION
+    #   value "us-west-2"
+    # - name: AWS_S3_ENDPOINT
+    #   value: s3.acme.com
   resources: {}
     # limits:
     #   cpu: 1
