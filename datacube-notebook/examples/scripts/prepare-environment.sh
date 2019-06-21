@@ -5,12 +5,16 @@ if [ "$(whoami)" != "jovyan" ]; then
     exit 1;
 fi
 
-source activate cubeenv
-
 cd
 
-conda install -y vim awscli
-cat >> .bashrc <<EOF
-alias vi=vim
 source activate cubeenv
+
+conda install -y vim awscli
+
+cat >> .bashrc <<EOF
+source activate cubeenv
+export GREP_OPTIONS='--color=auto'
+export LS_OPTS='--color=auto'
+alias ls='ls ${LS_OPTS}'
+alias vi='vim'
 EOF
