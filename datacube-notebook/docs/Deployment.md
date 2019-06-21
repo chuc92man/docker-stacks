@@ -123,7 +123,7 @@ worker:
     # - name: AWS_SECRET_ACCESS_KEY
     #   value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYINVALIDKEY"
     # - name: AWS_DEFAULT_REGION
-    #   value "us-west-2"
+    #   value: "us-west-2"
     # - name: AWS_S3_ENDPOINT
     #   value: "s3.acme.com"
     # - name: AWS_PROFILE
