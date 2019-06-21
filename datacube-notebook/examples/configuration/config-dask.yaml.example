@@ -70,7 +70,7 @@ worker:
     # - name: AWS_DEFAULT_REGION
     #   value "us-west-2"
     # - name: AWS_S3_ENDPOINT
-    #   value: s3.acme.com
+    #   value: "s3.acme.com"
   resources: {}
     # limits:
     #   cpu: 1
