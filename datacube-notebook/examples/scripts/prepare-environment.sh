@@ -13,7 +13,8 @@ conda install -y vim awscli
 
 cat >> .bashrc <<EOF
 source activate cubeenv
-export GREP_OPTIONS='--color=auto'
+export GREP_OPTS='--color=auto'
+alias grep='grep \${GREP_OPTS}'
 export LS_OPTS='--color=auto'
 alias ls='ls \${LS_OPTS}'
 alias vi='vim'
