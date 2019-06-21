@@ -15,6 +15,6 @@ cat >> .bashrc <<EOF
 source activate cubeenv
 export GREP_OPTIONS='--color=auto'
 export LS_OPTS='--color=auto'
-alias ls='ls ${LS_OPTS}'
+alias ls='ls \${LS_OPTS}'
 alias vi='vim'
 EOF
