@@ -64,7 +64,7 @@ When using Jupyter Notebook make sure the *cubeenv* kernel is selected:
 
 ![Example Notebook](media/JupyterHub_Notebook.png)
 
-## WIP: Horizontal scaling with Dask
+## Horizontal scaling with Dask
 
 An experimental integration for [Dask](https://dask.org/) is being worked at. To try it out, a *config-dask.yaml* file has to be created. The [config-dask.yaml.example](examples/configuration/config-dask.yaml.example) file can be used as a quick-reference guide.
 
@@ -108,6 +108,25 @@ Here's a screenshot from the Notebook itself:
 And here's a screenshot from Dask's Dashboard during the max/min/mean calculation:
 
 ![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min_Median.png)
+
+### AWS S3 access from Dask workers
+
+AWS credentials for use with GDAL can be distributed to *Dask* workers in a number of ways. The [config-dask.yaml.example](../../examples/configuration/config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
+
+```
+worker:
+  env:
+    - name: AWS_NO_SIGN_REQUEST  # This option might be used for buckets with public access rights. Available since GDAL 2.3.
+      value: "YES"
+    # - name: AWS_ACCESS_KEY_ID
+    #   value: "AKIAIOSFODNN7INVALID"
+    # - name: AWS_SECRET_ACCESS_KEY
+    #   value: "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"
+    # - name: AWS_DEFAULT_REGION
+    #   value "us-west-2"
+    # - name: AWS_S3_ENDPOINT
+    #   value: "s3.acme.com"
+```
 
 ## Revision control!
 
