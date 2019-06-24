@@ -1,5 +1,12 @@
 # Deployment
 
+Make Helm aware of the [JupyterHub Helm chart repository](https://jupyterhub.github.io/helm-chart/):
+
+```
+helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+helm repo update
+```
+
 It's necessary to create a *config.yaml* file specific to the *Kubernetes* cluster where *JupyterHub* is being deployed. For help doing so, please visit the documentation reference [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html) and [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [config.yaml.example](../examples/configuration/config.yaml.example) file can be used as a quick-reference guide.
 
 Once a *config.yaml* file is put together, the deployment of *JupyterHub* can be started with:
