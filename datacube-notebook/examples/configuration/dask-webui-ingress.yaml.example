@@ -5,7 +5,7 @@ metadata:
   namespace: dask
 spec:
   rules:
-  - host: dask.10.21.14.25.xip.io
+  - host: dask.satapps.org
     http:
       paths:
       - backend:

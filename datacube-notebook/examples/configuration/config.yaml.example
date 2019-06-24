@@ -31,7 +31,7 @@ hub:
 ingress:
   enabled: true
   hosts:
-    - jupyterhub.10.21.14.25.xip.io
+    - jupyterhub.satapps.org
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
 
@@ -41,7 +41,7 @@ auth:
   github:
     clientId: "<provide the clientId from GitHub>"
     clientSecret: "<provide the clientSecret from GitHub>"
-    callbackUrl: "http://jupyterhub.10.21.14.25.xip.io/hub/oauth_callback"
+    callbackUrl: "http://jupyterhub.satapps.org/hub/oauth_callback"
   admin:
     access: true
     users:
