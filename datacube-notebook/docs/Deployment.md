@@ -31,7 +31,7 @@ NAMESPACEDB=datacubedb
 
 helm upgrade --install $RELEASEDB stable/postgresql \
   --namespace $NAMESPACEDB \
-  --version 3.17.0 \
+  --version 5.1.1 \
   --values config-postgresql.yaml
 ```
 
