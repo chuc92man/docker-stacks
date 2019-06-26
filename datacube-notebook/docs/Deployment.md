@@ -7,9 +7,9 @@ helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
 ```
 
-It's necessary to create a *config.yaml* file specific to the *Kubernetes* cluster where *JupyterHub* is being deployed. For help doing so, please visit the documentation reference [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html) and [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [04-config-jhub.yaml.example](../examples/configuration/04-config-jhub.yaml.example) file can be used as a quick-reference guide.
+It's necessary to create a *config.yaml* file specific to the Kubernetes cluster where JupyterHub is being deployed. For help doing so, please visit the documentation reference [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html) and [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [04-config-jhub.yaml.example](../examples/configuration/04-config-jhub.yaml.example) file can be used as a quick-reference guide.
 
-Once a *config.yaml* file is put together, the deployment of *JupyterHub* can be started with:
+Once a *config.yaml* file is put together, the deployment of JupyterHub can be started with:
 
 ```
 RELEASE=jhub
@@ -21,9 +21,9 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
   --values config.yaml
 ```
 
-The underlying database required by the *Open Data Cube* can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql). For this purpose, a *config-postgresql.yaml* file has to be created. The [06-config-postgresql.yaml.example](../examples/configuration/06-config-postgresql.yaml.example) file can be used as a quick-reference guide.
+The underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql). For this purpose, a *config-postgresql.yaml* file has to be created. The [06-config-postgresql.yaml.example](../examples/configuration/06-config-postgresql.yaml.example) file can be used as a quick-reference guide.
 
-Once a *config-postgresql.yaml* file is put together, the deployment of the *PostgreSQL* database can be started with:
+Once a *config-postgresql.yaml* file is put together, the deployment of the PostgreSQL database can be started with:
 
 ```
 RELEASEDB=datacubedb
@@ -37,7 +37,7 @@ helm upgrade --install $RELEASEDB stable/postgresql \
 
 It is also necessary to create a corresponding configuration file *datacube-configmap.yaml* that is mounted as */etc/datacube.conf* through a ConfigMap named `datacube-conf`. The [05-datacube-configmap.yaml.example](../examples/configuration/05-datacube-configmap.yaml.example) file can be used as a quick-reference guide.
 
-Once a *datacube-configmap.yaml* file is put together, the corresponding *ConfigMap* can be set up with:
+Once a *datacube-configmap.yaml* file is put together, the corresponding ConfigMap can be set up with:
 
 `kubectl apply -f datacube-configmap.yaml`
 
@@ -51,7 +51,7 @@ JupyterLab is enabled by default in the [04-config-jhub.yaml.example](../example
 
 ![Example JupyterLab](media/JupyterHub_Lab_Launcher.png)
 
-After launching a Terminal, the *Open Data Cube* DB can be initialised with:
+After launching a Terminal, the Open Data Cube DB can be initialised with:
 
 ```
 source activate cubeenv
@@ -87,7 +87,7 @@ helm upgrade --install $RELEASEDASK stable/dask \
   --values config-dask.yaml
 ```
 
-From within a Jupyter Notebook a *Dask* distributed client can then be instantiated with:
+From within a Jupyter Notebook a Dask distributed client can then be instantiated with:
 
 ```
 import dask
@@ -98,15 +98,15 @@ client
 
 ### Ingress for Dask's Dashboard
 
-To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an *Ingress* might have to be deployed (e.g. if not using a public cloud's load balancer), using a *dask-webui-ingress.yaml* file. The [08-dask-webui-ingress.yaml.example](../examples/configuration/08-dask-webui-ingress.yaml.example) file can be used as a quick-reference guide.
+To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distributed.html#dashboard) an Ingress might have to be deployed (e.g. if not using a public cloud's load balancer), using a *dask-webui-ingress.yaml* file. The [08-dask-webui-ingress.yaml.example](../examples/configuration/08-dask-webui-ingress.yaml.example) file can be used as a quick-reference guide.
 
-Once a *dask-webui-ingress.yaml* is put together, the deployment of an *Ingress* can be started with:
+Once a *dask-webui-ingress.yaml* is put together, the deployment of an Ingress can be started with:
 
 `kubectl apply -f dask-webui-ingress.yaml`
 
 ### Sample Notebook for Dask's distributed computing
 
-A sample Notebook is provided to validate the setup of the *Dask* cluster, [satellite-imagery-geotiff-distributed.ipynb](../examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb). Such Notebook is based on the one provided within Dask's GitHub repo [here](https://github.com/dask/dask-examples/blob/master/applications/satellite-imagery-geotiff.ipynb).
+A sample Notebook is provided to validate the setup of the Dask cluster, [satellite-imagery-geotiff-distributed.ipynb](../examples/notebooks/dask/satellite-imagery-geotiff-distributed.ipynb). Such Notebook is based on the one provided within Dask's GitHub repo [here](https://github.com/dask/dask-examples/blob/master/applications/satellite-imagery-geotiff.ipynb).
 
 Here's a screenshot from the Notebook itself:
 
@@ -118,7 +118,7 @@ And here's a screenshot from Dask's Dashboard during the max/min/mean calculatio
 
 ### AWS S3 access from Dask workers
 
-AWS credentials for use with GDAL can be distributed to *Dask* workers in a number of ways. The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
+AWS credentials for use with GDAL can be distributed to Dask workers in a number of ways. The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
 
 ```
 worker:
@@ -139,13 +139,13 @@ worker:
 
 ## Revision control
 
-Readers would have noticed that the above setup instructions insist on the creation of *YAML* files. The reason for creating such files, rather than e.g. passing values to the Helm client using the `--set` option, is that such files should be put under revision control, so that they can be used to reproduce a working setup programmatically.
+Readers would have noticed that the above setup instructions insist on the creation of YAML files. The reason for creating such files, rather than e.g. passing values to the Helm client using the `--set` option, is that such files should be put under revision control, so that they can be used to reproduce a working setup programmatically.
 
 Note that is it generally a very bad idea to include credentials in configurations files directly as there's a risk that these will be accidentally shared with people not authorized to access them.
 
 ## Cleaning up
 
-If you wish to undo changes to your *Kubernetes* cluster, simply issue the following commands:
+If you wish to undo changes to your Kubernetes cluster, simply issue the following commands:
 
 ```
 helm delete $RELEASE --purge
