@@ -1,5 +1,6 @@
+# Generate secret with: openssl rand -hex 32
 proxy:
-  secretToken: "<generate one with $(openssl rand -hex 32)>"
+  secretToken: "### snip01 ###"
 
 # see: https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#use-jupyterlab-by-default
 #      https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#using-nbgitpuller-to-synchronize-a-folder
@@ -39,8 +40,8 @@ ingress:
 auth:
   type: github
   github:
-    clientId: "<provide the clientId from GitHub>"
-    clientSecret: "<provide the clientSecret from GitHub>"
+    clientId: "### snip02 ###"
+    clientSecret: "### snip03 ###"
     callbackUrl: "http://jupyterhub.satapps.org/hub/oauth_callback"
   admin:
     access: true
