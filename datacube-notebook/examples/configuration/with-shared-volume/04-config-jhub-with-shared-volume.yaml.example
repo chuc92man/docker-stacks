@@ -1,0 +1,48 @@
+# Generate secret with: openssl rand -hex 32
+proxy:
+  secretToken: "### snip01 ###"
+
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#use-jupyterlab-by-default
+#      https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html#using-nbgitpuller-to-synchronize-a-folder
+singleuser:
+  image:
+    name: luigidifraia/datacube-notebook
+    tag: v1.0.0-alpha
+  defaultUrl: "/lab"
+  extraEnv:
+    EDITOR: "vim"
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["gitpuller", "https://github.com/ceos-seo/data_cube_notebooks", "master", "notebooks"]
+  storage:
+    extraVolumes:
+      - name: jupyterhub-shared
+        persistentVolumeClaim:
+          claimName: jupyterhub-shared-volume
+    extraVolumeMounts:
+      - name: jupyterhub-shared
+        mountPath: /home/shared
+
+hub:
+  extraConfig:
+    jupyterlab: |
+      c.Spawner.cmd = ['jupyter-labhub']
+
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/advanced.html#ingress
+ingress:
+  enabled: true
+  hosts:
+    - jupyterhub.satapps.org
+
+# see: https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html#github
+auth:
+  type: github
+  github:
+    clientId: "### snip02 ###"
+    clientSecret: "### snip03 ###"
+    callbackUrl: "http://jupyterhub.satapps.org/hub/oauth_callback"
+  admin:
+    access: true
+    users:
+      - luigidifraia
