@@ -1,3 +1,0 @@
-postgresqlPassword: localuser1234
-postgresqlDatabase: datacube
-#persistence.enabled: false
