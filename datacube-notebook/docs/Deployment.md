@@ -2,7 +2,7 @@
 
 Make Helm aware of the [JupyterHub Helm chart repository](https://jupyterhub.github.io/helm-chart/):
 
-```
+```bash
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
 ```
@@ -11,7 +11,7 @@ It's necessary to create a *config.yaml* file specific to the Kubernetes cluster
 
 Once a *config.yaml* file is put together, the deployment of JupyterHub can be started with:
 
-```
+```bash
 RELEASE=jhub
 NAMESPACE=jhub
 
@@ -25,7 +25,7 @@ The underlying database required by the Open Data Cube can be set up by means of
 
 Once a *config-postgresql.yaml* file is put together, the deployment of the PostgreSQL database can be started with:
 
-```
+```bash
 RELEASEDB=datacubedb
 NAMESPACEDB=datacubedb
 
@@ -39,7 +39,9 @@ It is also necessary to create a corresponding configuration file *datacube-conf
 
 Once a *datacube-configmap.yaml* file is put together, the corresponding ConfigMap can be set up with:
 
-`kubectl apply -f datacube-configmap.yaml`
+```bash
+kubectl apply -f datacube-configmap.yaml
+```
 
 The resulting environment will look like the following one:
 
@@ -53,14 +55,14 @@ JupyterLab is enabled by default in the [04-config-jhub.yaml.example](../example
 
 After launching a Terminal, the Open Data Cube DB can be initialised with:
 
-```
+```bash
 source activate cubeenv
 datacube -v system init
 ```
 
 Afterwards, its status can be checked with:
 
-```
+```bash
 source activate cubeenv
 datacube -v system check
 ```
@@ -77,7 +79,7 @@ An experimental integration for [Dask](https://dask.org/) is being worked at. To
 
 Once a *config-dask.yaml* file is put together, the deployment of the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) can be started with:
 
-```
+```bash
 RELEASEDASK=dask
 NAMESPACEDASK=dask
 
@@ -89,7 +91,7 @@ helm upgrade --install $RELEASEDASK stable/dask \
 
 From within a Jupyter Notebook a Dask distributed client can then be instantiated with:
 
-```
+```python
 import dask
 from dask.distributed import Client
 client = Client('dask-scheduler.dask.svc.cluster.local:8786')
@@ -102,7 +104,9 @@ To access Dask's [Dashboard](http://docs.dask.org/en/latest/diagnostics-distribu
 
 Once a *dask-webui-ingress.yaml* is put together, the deployment of an Ingress can be started with:
 
-`kubectl apply -f dask-webui-ingress.yaml`
+```bash
+kubectl apply -f dask-webui-ingress.yaml
+```
 
 ### Sample Notebook for Dask's distributed computing
 
@@ -116,11 +120,15 @@ And here's a screenshot from Dask's Dashboard during the max/min/mean calculatio
 
 ![Example Dask Dashboard during max/min calculations](media/Dask_Dashboard_Progress_Max_Min_Median.png)
 
-### AWS S3 access from Dask workers
+### AWS access from Dask workers
 
-AWS credentials for use with GDAL can be distributed to Dask workers in a number of ways. The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
+AWS credentials for use with GDAL can be distributed to Dask workers in a number of ways.
 
-```
+#### Static distribution
+
+The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
+
+```yaml
 worker:
   env:
     - name: AWS_NO_SIGN_REQUEST  # This option might be used for buckets with public access rights. Available since GDAL 2.3.
@@ -137,6 +145,28 @@ worker:
     #   value: "acme"
 ```
 
+#### Dynamic distribution
+
+The [useful-snippets.ipynb](../examples/notebooks/misc/useful-snippets.ipynb) Notebook provides an example on how to set GDAL's environment variables for AWS access:
+
+```python
+def worker_setup_auto():
+    from datacube.utils.rio import set_default_rio_config, activate_from_config
+    
+    # these settings will be applied in every worker thread
+    set_default_rio_config(aws={'aws_unsigned': True},
+                           cloud_defaults=True)
+    
+    # Force activation in the main thread
+    # - Really just to test that configuration works
+    # - Every worker thread will automatically run this again
+    return activate_from_config()
+```
+```python
+# Runs once on every worker process, not per worker thread!
+client.register_worker_callbacks(setup=worker_setup_auto)
+```
+
 ## Revision control
 
 Readers would have noticed that the above setup instructions insist on the creation of YAML files. The reason for creating such files, rather than e.g. passing values to the Helm client using the `--set` option, is that such files should be put under revision control, so that they can be used to reproduce a working setup programmatically.
@@ -147,7 +177,7 @@ Note that is it generally a very bad idea to include credentials in configuratio
 
 If you wish to undo changes to your Kubernetes cluster, simply issue the following commands:
 
-```
+```bash
 helm delete $RELEASE --purge
 kubectl delete -f datacube-configmap.yaml
 kubectl delete namespace $NAMESPACE
