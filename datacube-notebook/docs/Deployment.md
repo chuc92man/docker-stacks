@@ -140,7 +140,7 @@ AWS credentials for use with GDAL can be distributed to Dask workers in a number
 
 #### Static distribution
 
-The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to set [GDAL environment variables for AWS access]((https://gdal.org/user/virtual_file_systems.html)) at the time a worker Pod is created or upgraded:
+The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to set [GDAL environment variables for AWS access](https://gdal.org/user/virtual_file_systems.html) at the time a worker Pod is created or upgraded:
 
 ```yaml
 worker:
