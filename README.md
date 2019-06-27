@@ -7,3 +7,7 @@ Jupyter Docker Stacks are a set of ready-to-run [Docker images](https://hub.dock
 If you're unfamiliar with *Zero to JupyterHub with Kubernetes*, check the official documentation on [Read the Docs](https://zero-to-jupyterhub.readthedocs.io/en/latest/).
 
 If you need help setting up *Helm*, check the setup documentation on [Read the Docs](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-helm.html).
+
+## Quick Start
+
+You can try a recent build of the luigidifraia/datacube-notebook image on mybinder.org by simply clicking [this link](https://mybinder.org/v2/gh/luigidifraia/docker-stacks/master?filepath=binder%2FREADME.ipynb).
