@@ -1,11 +1,8 @@
-# Pre-requisites
+# Setting up JupyterHub
 
-In order to use the deployment material described here you need access to a Kubernetes server or cluster with Helm installed.\
-For development purposes [minikube](https://kubernetes.io/docs/setup/learning-environment/minikube/) and [microk8s](https://microk8s.io/) can be used as well.
+In order to use the deployment material described here you need access to a Kubernetes server or cluster with Helm installed. For development and learning purposes [minikube](https://kubernetes.io/docs/setup/learning-environment/minikube/) and [microk8s](https://microk8s.io/) can be used too.
 
 For help setting up Helm, check the setup documentation on [Read the Docs](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-helm.html).
-
-# Deployment
 
 Make Helm aware of the [JupyterHub Helm chart repository](https://jupyterhub.github.io/helm-chart/):
 
@@ -13,6 +10,8 @@ Make Helm aware of the [JupyterHub Helm chart repository](https://jupyterhub.git
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
 ```
+
+## Install JupyterHub
 
 It's necessary to create a *config.yaml* file specific to the Kubernetes cluster where JupyterHub is being deployed. For help doing so, please visit the documentation reference [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html) and [here](https://zero-to-jupyterhub.readthedocs.io/en/latest/reference.html#helm-chart-configuration-reference). The [04-config-jhub.yaml.example](../examples/configuration/04-config-jhub.yaml.example) file can be used as a quick-reference guide.
 
@@ -28,6 +27,8 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
   --values config.yaml
 ```
 
+## Install PostgreSQL
+
 The underlying database required by the Open Data Cube can be set up by means of the official [Helm chart for PostgreSQL](https://github.com/helm/charts/tree/master/stable/postgresql). For this purpose, a *config-postgresql.yaml* file has to be created. The [06-config-postgresql.yaml.example](../examples/configuration/06-config-postgresql.yaml.example) file can be used as a quick-reference guide.
 
 Once a *config-postgresql.yaml* file is put together, the deployment of the PostgreSQL database can be started with:
@@ -42,6 +43,8 @@ helm upgrade --install $RELEASEDB stable/postgresql \
   --values config-postgresql.yaml
 ```
 
+## Set up /etc/datacube.conf
+
 It is also necessary to create a corresponding configuration file *datacube-configmap.yaml* that is mounted as */etc/datacube.conf* through a ConfigMap named `datacube-conf`. The [05-datacube-configmap.yaml.example](../examples/configuration/05-datacube-configmap.yaml.example) file can be used as a quick-reference guide.
 
 Once a *datacube-configmap.yaml* file is put together, the corresponding ConfigMap can be set up with:
@@ -50,15 +53,19 @@ Once a *datacube-configmap.yaml* file is put together, the corresponding ConfigM
 kubectl apply -f datacube-configmap.yaml
 ```
 
-The resulting environment will look like the following one:
+## Test the platform post-deployment
+
+The resulting computing platform will look like the following one:
 
 ![Example Login with GitHub](media/JupyterHub_GitHub_OAuth.png)
 
 ![Example Server Starting](media/JupyterHub_Server_Starting.png)
 
-JupyterLab is enabled by default in the [04-config-jhub.yaml.example](../examples/configuration/04-config-jhub.yaml.example) provided.
+Note that JupyterLab is enabled by default in the [04-config-jhub.yaml.example](../examples/configuration/04-config-jhub.yaml.example) provided.
 
 ![Example JupyterLab](media/JupyterHub_Lab_Launcher.png)
+
+## Database initialisation
 
 After launching a Terminal, the Open Data Cube DB can be initialised with:
 
@@ -82,7 +89,7 @@ When using Jupyter Notebook make sure the *cubeenv* kernel is selected:
 
 ## Horizontal scaling with Dask
 
-An experimental integration for [Dask](https://dask.org/) is being worked at. To try it out, a *config-dask.yaml* file has to be created. The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file can be used as a quick-reference guide.
+The setup material for deploying a [Dask](https://dask.org/) cluster is also available. To try it out, a *config-dask.yaml* file has to be created. The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file can be used as a quick-reference guide.
 
 Once a *config-dask.yaml* file is put together, the deployment of the [Dask cluster](https://github.com/helm/charts/tree/master/stable/dask) can be started with:
 
@@ -133,7 +140,7 @@ AWS credentials for use with GDAL can be distributed to Dask workers in a number
 
 #### Static distribution
 
-The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to do so using environment variabled as per GDAL's [documentation](https://gdal.org/user/virtual_file_systems.html):
+The [07-config-dask.yaml.example](../examples/configuration/07-config-dask.yaml.example) file provides examples on how to set [GDAL environment variables for AWS access]((https://gdal.org/user/virtual_file_systems.html)) at the time a worker Pod is created or upgraded:
 
 ```yaml
 worker:
@@ -154,7 +161,7 @@ worker:
 
 #### Dynamic distribution
 
-The [useful-snippets.ipynb](../examples/notebooks/misc/useful-snippets.ipynb) Notebook provides an example on how to set GDAL's environment variables for AWS access, at Notebook execution time, on each Dask worker:
+The [useful-snippets.ipynb](../examples/notebooks/misc/useful-snippets.ipynb) Notebook provides an example on how to set GDAL environment variables for AWS access at Notebook execution time, on each Dask worker:
 
 ```python
 def worker_setup_auto():
