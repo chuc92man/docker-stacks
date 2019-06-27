@@ -1,3 +1,10 @@
+# Pre-requisites
+
+In order to use the deployment material described here you need access to a Kubernetes server or cluster with Helm installed.\
+For development purposes [minikube](https://kubernetes.io/docs/setup/learning-environment/minikube/) and [microk8s](https://microk8s.io/) can be used as well.
+
+For help setting up Helm, check the setup documentation on [Read the Docs](https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-helm.html).
+
 # Deployment
 
 Make Helm aware of the [JupyterHub Helm chart repository](https://jupyterhub.github.io/helm-chart/):
