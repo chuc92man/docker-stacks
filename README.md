@@ -8,4 +8,4 @@ If you're unfamiliar with *Zero to JupyterHub with Kubernetes*, check the offici
 
 ## Quick Start
 
-You can try a recent build of the [luigidifraia/datacube-notebook image](https://cloud.docker.com/u/luigidifraia/repository/docker/luigidifraia/datacube-notebook) on mybinder.org by simply clicking [this link](https://mybinder.org/v2/gh/luigidifraia/datacube-notebook-binder/master?filepath=README.ipynbb).
+You can try a recent build of the [luigidifraia/datacube-notebook image](https://cloud.docker.com/u/luigidifraia/repository/docker/luigidifraia/datacube-notebook) on mybinder.org by simply clicking [this link](https://mybinder.org/v2/gh/luigidifraia/datacube-notebook-binder/master?filepath=README.ipynb).
