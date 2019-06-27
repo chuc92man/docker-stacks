@@ -154,7 +154,7 @@ worker:
 
 #### Dynamic distribution
 
-The [useful-snippets.ipynb](../examples/notebooks/misc/useful-snippets.ipynb) Notebook provides an example on how to set GDAL's environment variables for AWS access:
+The [useful-snippets.ipynb](../examples/notebooks/misc/useful-snippets.ipynb) Notebook provides an example on how to set GDAL's environment variables for AWS access, at Notebook execution time, on each Dask worker:
 
 ```python
 def worker_setup_auto():
@@ -178,7 +178,7 @@ client.register_worker_callbacks(setup=worker_setup_auto)
 
 Readers would have noticed that the above setup instructions insist on the creation of YAML files. The reason for creating such files, rather than e.g. passing values to the Helm client using the `--set` option, is that such files should be put under revision control, so that they can be used to reproduce a working setup programmatically.
 
-Note that is it generally a very bad idea to include credentials in configurations files directly as there's a risk that these will be accidentally shared with people not authorized to access them.
+Note that it is a very bad idea to include credentials in configurations files, as there's a risk that such credentials will be accidentally shared with people not authorized to access them.
 
 ## Cleaning up
 
