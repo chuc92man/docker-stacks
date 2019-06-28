@@ -57,7 +57,8 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
 
 # Install the following useful miscellaneous packages
 RUN conda install --quiet --yes --name cubeenv \
-	vim-8.1.1343 && \
+	vim=8.1.1343 \
+	awscli=1.16.189 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
