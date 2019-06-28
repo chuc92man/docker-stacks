@@ -20,14 +20,14 @@ RUN conda create --yes --name cubeenv python=3.6 \
 
 # Install the following useful packages to run Earth Observation Notebooks (such as DCAL)
 RUN conda install --quiet --yes --name cubeenv \
-	boto3=1.9.172 \
-	dask=1.2.2 \
+	boto3=1.9.179 \
+	dask=2.0.0 \
 	descartes=1.1.0 \
-	distributed=1.28.1 \
+	distributed=2.0.1 \
 	folium=0.9.1 \
 	geopandas=0.5.0 \
 	hdmedians=0.13 \
-	ipyleaflet=0.10.5 \
+	ipyleaflet=0.10.8 \
 	matplotlib=3.1.0 \
 	rasterstats=0.13.1 \
 	ruamel=1.0 \
@@ -37,6 +37,14 @@ RUN conda install --quiet --yes --name cubeenv \
 	scipy=1.3.0 \
 	seaborn=0.9.0 \
 	shapely=1.6.4 && \
+	conda clean -tipsy && \
+	fix-permissions $CONDA_DIR && \
+	fix-permissions /home/$NB_USER
+
+# Install the following useful miscellaneous packages
+RUN conda install --quiet --yes --name cubeenv \
+	vim=8.1.1343 \
+	awscli=1.16.189 && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
@@ -52,13 +60,5 @@ RUN conda install --quiet --yes nb_conda_kernels && \
 # Enable Lab extensions
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
 	jupyter labextension install jupyter-leaflet && \
-	fix-permissions $CONDA_DIR && \
-	fix-permissions /home/$NB_USER
-
-# Install the following useful miscellaneous packages
-RUN conda install --quiet --yes --name cubeenv \
-	vim=8.1.1343 \
-	awscli=1.16.189 && \
-	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
