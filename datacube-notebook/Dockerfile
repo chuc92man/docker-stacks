@@ -54,3 +54,10 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
 	jupyter labextension install jupyter-leaflet && \
 	fix-permissions $CONDA_DIR && \
 	fix-permissions /home/$NB_USER
+
+# Install the following useful miscellaneous packages
+RUN conda install --quiet --yes --name cubeenv \
+	vim-8.1.1343 && \
+	conda clean -tipsy && \
+	fix-permissions $CONDA_DIR && \
+	fix-permissions /home/$NB_USER
