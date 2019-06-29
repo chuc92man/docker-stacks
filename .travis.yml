@@ -1,0 +1,8 @@
+services:
+  - docker
+
+before_script:
+  - cd datacube-notebook
+
+script:
+  - docker build -t datacube-notebook .
