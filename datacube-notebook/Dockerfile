@@ -83,8 +83,8 @@ RUN /opt/conda/envs/cubeenv/bin/pip install --no-cache-dir \
 
 # Install the following useful miscellaneous packages
 RUN conda install --yes --name cubeenv \
-	vim=8.2.0616 \
-	awscli=1.18.43 && \
+    vim=8.2.0616 \
+    awscli=1.18.43 && \
     conda clean --all -f -y && \
-	fix-permissions $CONDA_DIR && \
-	fix-permissions /home/$NB_USER
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
