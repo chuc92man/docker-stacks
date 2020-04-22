@@ -43,7 +43,7 @@ RUN conda install --yes --name cubeenv \
     nomkl==1.0 \
     numpy==1.18.1 \
     pandas==1.0.1 && \
-    rm -rf /home/$NB_USER/.local && \
+    conda clean --all -f -y && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
