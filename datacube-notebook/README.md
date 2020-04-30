@@ -8,12 +8,4 @@ You can try a recent build of the [luigidifraia/datacube-notebook image](https:/
 
 ## TODO
 
-- Also install dask-labextension in future builds:
-    ```
-    RUN jupyter labextension install --no-build dask-labextension && \
-	    jupyter labextension install --no-build @jupyter-widgets/jupyterlab-manager && \
-	    jupyter labextension install --no-build jupyter-leaflet && \
-	    jupyter lab build && \
-	    fix-permissions $CONDA_DIR && \
-	    fix-permissions /home/$NB_USER
-    ```
+- Nothing.
